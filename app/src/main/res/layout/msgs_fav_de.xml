@@ -1,76 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="15dp"
-    android:paddingTop="15dp"
-    android:paddingBottom="15dp"
-    android:paddingRight="15dp"
-    android:background="@drawable/card_background_selector"
-    android:descendantFocusability="afterDescendants"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <TextView
+    app:cardElevation="2dp"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="5dp"
+    android:layout_marginBottom="1dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardMaxElevation="5dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    >
+    <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/tvTitle_m"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:text="---"
-        android:textColor="#ff0000"
-        android:layout_gravity="top"
-        />
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingRight="15dp"
+        android:descendantFocusability="afterDescendants"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/tvMsg_m"
-        android:gravity="right"
-        android:textSize="25sp"
-        />
-    <View
-        android:id="@+id/view1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@drawable/shape" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/asasasas">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="28dp"
-            android:id="@+id/more_btn_fav"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/tvTitle_m"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/fav_btn"
-            android:src="@drawable/more"/>
+            android:gravity="center"
+            android:text="---"
+            android:textColor="#ff0000"
+            android:layout_gravity="top"
+            />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="28dp"
-            android:id="@+id/fav_btn"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/new_Msg_m"
-            android:src="@drawable/baseline_favorite_true"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/tvMsg_m"
+            android:gravity="right"
+            android:textSize="25sp"
+            />
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/shape" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/asasasas">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:id="@+id/more_btn_fav"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/fav_btn"
+                android:src="@drawable/more"/>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:id="@+id/fav_btn"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/new_Msg_m"
+                android:src="@drawable/ic_favorite"/>
 
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="28dp"
-            android:id="@+id/new_Msg_m"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/copy"
-            android:src="@drawable/new_msg"
-            android:visibility="invisible"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:id="@+id/new_Msg_m"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/copy"
+                android:src="@drawable/new_msg"
+                android:visibility="invisible"/>
 
 
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</androidx.cardview.widget.CardView>
     <!--        <ImageView-->
     <!--            android:id="@+id/fav"-->
     <!--            android:layout_width="30dp"-->
