@@ -31,7 +31,7 @@ class FavoriteFragment : Fragment() {
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
 
-    private val msgfavadapter by lazy { Msgs_Fav_Adapter() }
+    private val msgfavadapter by lazy { Msgs_Fav_Adapter(requireContext()) }
 
     private val retrofitService = ApiService.provideRetrofitInstance()
 

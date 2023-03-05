@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.messages.abdallah.mymessages.R
 import com.messages.abdallah.mymessages.databinding.MsgstypeslayoutBinding
+import com.messages.abdallah.mymessages.databinding.TypesLayBinding
 import com.messages.abdallah.mymessages.models.MsgsTypeWithCount
 import com.messages.abdallah.mymessages.models.MsgsTypesModel
 
