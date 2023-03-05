@@ -28,7 +28,7 @@ import kotlinx.coroutines.launch
 
 class FavoriteFragment : Fragment() {
 
-    private var _binding: FragmentFavoriteBinding? = null
+    private lateinit var _binding: FragmentFavoriteBinding
     private val binding get() = _binding!!
 
     private val msgfavadapter by lazy { Msgs_Fav_Adapter(requireContext()) }

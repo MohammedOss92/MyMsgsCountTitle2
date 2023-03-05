@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 
 class SecondFragment : Fragment() {
 
-    private var _binding : FragmentSecondBinding?=null
+    private lateinit var _binding : FragmentSecondBinding
     private val binding get() = _binding!!
     private var argsId = -1
     private var MsgTypes_name = ""
@@ -69,7 +69,7 @@ class SecondFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+
     }
 
     private fun adapterOnClick(){

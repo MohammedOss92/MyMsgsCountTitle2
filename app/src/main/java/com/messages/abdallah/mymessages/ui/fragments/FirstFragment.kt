@@ -30,7 +30,7 @@ import com.messages.abdallah.mymessages.ui.MainActivity
 import kotlinx.coroutines.launch
 
 class FirstFragment : Fragment() {
-    private var _binding : FragmentFirstBinding?=null
+    private lateinit var _binding : FragmentFirstBinding
     private val binding get() = _binding!!
 
     var mprogressdaialog: Dialog? = null
@@ -137,7 +137,7 @@ class FirstFragment : Fragment() {
      */
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+
     }
 
     private fun menu_item() {
