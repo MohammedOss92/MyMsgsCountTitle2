@@ -26,5 +26,9 @@ data class MsgsModel(
 
     @ColumnInfo("ID_Type_id", index = true)
     @SerializedName("ID_Type_id")
-    var ID_Type_id : Int
+    var ID_Type_id : Int,
+
+    @ColumnInfo("is_fav")
+    @SerializedName("is_fav")
+    var is_fav:Boolean = false
 )

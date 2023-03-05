@@ -12,7 +12,7 @@ import com.messages.abdallah.mymessages.models.FavoriteModel
 import com.messages.abdallah.mymessages.models.MsgsModel
 import com.messages.abdallah.mymessages.models.MsgsTypesModel
 
-@Database(entities = [MsgsTypesModel::class,MsgsModel::class,FavoriteModel::class], version =5, exportSchema = false)
+@Database(entities = [MsgsTypesModel::class,MsgsModel::class,FavoriteModel::class], version =6, exportSchema = false)
 abstract class PostDatabas : RoomDatabase() {
 
     abstract fun TypesDao():MsgsTypesDao

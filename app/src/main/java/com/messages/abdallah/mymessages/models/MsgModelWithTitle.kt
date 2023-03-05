@@ -6,4 +6,5 @@ data class MsgModelWithTitle(
     @Embedded
     var msgModel: MsgsModel? = null,
     val typeTitle: String = ""
+
 )

@@ -5,7 +5,7 @@ import com.messages.abdallah.mymessages.db.LocaleSource
 import com.messages.abdallah.mymessages.models.FavoriteModel
 import com.messages.abdallah.mymessages.models.MsgsModel
 
-class MsgsRepo constructor(val apiService: ApiService,private val localeSource: LocaleSource) {
+class MsgsRepo constructor(val apiService: ApiService, private val localeSource: LocaleSource) {
 
     suspend fun getMsgs_Ser(ID_Type_id: Int) = apiService.getMsgs_Ser(ID_Type_id)
 
@@ -17,13 +17,24 @@ class MsgsRepo constructor(val apiService: ApiService,private val localeSource: 
             localeSource.insert_msgs(msgs)
         }
     }
+    // update msg_table items favorite state
+    suspend fun update_fav(id: Int,state:Boolean) {
 
-    /***************************/
-    suspend fun add_fav (fav: List<FavoriteModel>){
-
-            localeSource.add_fav(fav)
-
+        localeSource.update_fav(id,state)
     }
 
-    suspend fun getAllFav()=localeSource.getAllFav()
+    /***************************/
+    suspend fun add_fav(fav: FavoriteModel) {
+
+        localeSource.add_fav(fav)
+    }
+
+    suspend fun getAllFav() = localeSource.getAllFav()
+
+    // delete favorite item from db
+    suspend fun deleteFav(fav: FavoriteModel) {
+
+        localeSource.delete_fav(fav)
+    }
+
 }

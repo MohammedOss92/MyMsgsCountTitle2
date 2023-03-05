@@ -23,8 +23,8 @@ import kotlinx.coroutines.withContext
 
 class MsgsViewModel constructor(private val msgsRepo:MsgsRepo):ViewModel() {
 
-    private val __response = MutableLiveData<List<FavoriteModel>>()
-    val responseMsgsFav: LiveData<List<FavoriteModel>>
+    private var __response = MutableLiveData<List<FavoriteModel>>()
+    val responseMsgsFav: MutableLiveData<List<FavoriteModel>>
         get() = __response
 
     private val retrofitService = ApiService.provideRetrofitInstance()
@@ -72,15 +72,26 @@ class MsgsViewModel constructor(private val msgsRepo:MsgsRepo):ViewModel() {
     }
 
     /****************/
-     fun add_fav(fav: List<FavoriteModel>)= viewModelScope.launch {
+     fun add_fav(fav: FavoriteModel)= viewModelScope.launch {
         msgsRepo.add_fav(fav)
     }
 
-    fun getFav(context: MainActivity): MutableLiveData<List<FavoriteModel>> {
+    // update msg_table items favorite state
+    fun update_fav(id: Int,state:Boolean) = viewModelScope.launch {
+        msgsRepo.update_fav(id,state)
+    }
+
+    fun getFav(): MutableLiveData<List<FavoriteModel>> {
+        Log.e("tessst","entred22")
         viewModelScope.launch {
-            msgsRepo.getAllFav()
+          __response.postValue(msgsRepo.getAllFav())
         }
         return __response
+    }
+
+    // delete favorite item from db
+    fun delete_fav(fav: FavoriteModel)= viewModelScope.launch {
+        msgsRepo.deleteFav(fav)
     }
     /*********/
 

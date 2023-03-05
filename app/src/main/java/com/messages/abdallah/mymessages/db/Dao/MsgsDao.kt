@@ -32,4 +32,8 @@ interface MsgsDao {
 
     @Query("delete from msg_table")
     fun deleteAllmessage()
+
+    // update msg_table items favorite state
+    @Query("Update msg_table SET is_fav = :state where id =:ID")
+    suspend fun update_fav(ID:Int,state:Boolean)
 }

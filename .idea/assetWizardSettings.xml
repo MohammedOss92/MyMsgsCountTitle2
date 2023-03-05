@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/favorite/baseline_favorite_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/favorite_border/baseline_favorite_border_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_favorite" />
+                            <entry key="color" value="0e0404" />
+                            <entry key="outputName" value="baseline_favorite_border_false" />
                             <entry key="sourceFile" value="C:\Users\Abdallah\AndroidStudioProjects\MyMsgs-count-title-" />
                           </map>
                         </option>

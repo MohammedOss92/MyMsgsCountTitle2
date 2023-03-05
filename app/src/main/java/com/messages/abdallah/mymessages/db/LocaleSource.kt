@@ -1,6 +1,7 @@
 package com.messages.abdallah.mymessages.db
 
 import android.content.Context
+import android.util.Log
 import com.messages.abdallah.mymessages.db.Dao.FavoriteDao
 import com.messages.abdallah.mymessages.db.Dao.MsgsDao
 import com.messages.abdallah.mymessages.db.Dao.MsgsTypesDao
@@ -61,12 +62,23 @@ class LocaleSource(context: Context) {
     }
 
     /************************/
-    suspend fun add_fav(fav: List<FavoriteModel>){
+    suspend fun add_fav(fav: FavoriteModel){
         FavoriteDao?.add_fav(fav)
     }
 
     suspend fun getAllFav(): List<FavoriteModel>{
+        Log.e("tessst","entred666")
         return FavoriteDao?.getAllFav()!!
+    }
+
+    // delete favorite item from db
+    suspend fun delete_fav(fav:FavoriteModel) {
+        FavoriteDao?.deletefav(fav)!!
+    }
+
+    // update msg_table items favorite state
+    suspend fun update_fav(id: Int,state:Boolean) {
+        Msgs_Dao?.update_fav(id,state)!!
     }
 
 }

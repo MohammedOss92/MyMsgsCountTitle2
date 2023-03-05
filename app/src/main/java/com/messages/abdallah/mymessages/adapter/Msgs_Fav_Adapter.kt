@@ -13,9 +13,16 @@ import com.messages.abdallah.mymessages.models.FavoriteModel
 import com.messages.abdallah.mymessages.models.MsgModelWithTitle
 
 class Msgs_Fav_Adapter : RecyclerView.Adapter<Msgs_Fav_Adapter.MyViewHolder>() {
+    var onItemClick: ((fav:FavoriteModel) -> Unit)? = null // pass favorite item on click
 
     inner class MyViewHolder(val binding: MsgsFavDeBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.favBtn.setOnClickListener {
 
+                onItemClick?.invoke(msgs_fav_list[adapterPosition])
+
+            }
+        }
 
     }
     private val diffCallback = object : DiffUtil.ItemCallback<FavoriteModel>(){
@@ -43,18 +50,18 @@ class Msgs_Fav_Adapter : RecyclerView.Adapter<Msgs_Fav_Adapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: Msgs_Fav_Adapter.MyViewHolder, position: Int) {
         val current_msgsModel = msgs_fav_list[position]
         holder.binding.apply {
-            tvTitleM.text=current_msgsModel.ID_Type_id.toString()
+            tvTitleM.text=current_msgsModel.TypeTitle
             tvMsgM.text=current_msgsModel.MessageName
 
             newMsgM.setImageResource(R.drawable.new_msg)
 
-//            if (current_msgsModel.?.new_msgs == 0){
-//
-//                newMsgM.setVisibility(View.INVISIBLE)
-//            }
-//            else {
-//                newMsgM.setVisibility(View.VISIBLE)
-//            }
+            if (current_msgsModel.new_msgs == 0){
+
+                newMsgM.setVisibility(View.INVISIBLE)
+            }
+            else {
+                newMsgM.setVisibility(View.VISIBLE)
+            }
         }
     }
 

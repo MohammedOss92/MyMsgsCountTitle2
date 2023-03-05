@@ -17,6 +17,10 @@ data class FavoriteModel(
     @SerializedName("MessageName")
     var MessageName : String,
 
+    @ColumnInfo("TypeTitle")
+    @SerializedName("TypeTitle")
+    var TypeTitle : String,
+
     @ColumnInfo("new_msgs")
     @SerializedName("new_msgs")
     var new_msgs : Int,
@@ -24,4 +28,6 @@ data class FavoriteModel(
     @ColumnInfo("ID_Type_id", index = true)
     @SerializedName("ID_Type_id")
     var ID_Type_id : Int
+
+
 )

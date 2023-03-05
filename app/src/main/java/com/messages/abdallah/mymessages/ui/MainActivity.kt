@@ -2,9 +2,7 @@ package com.messages.abdallah.mymessages.ui
 
 import android.annotation.SuppressLint
 import android.app.Dialog
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -14,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.messages.abdallah.mymessages.R
@@ -44,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        setSupportActionBar(binding.atoolbar)
+        setSupportActionBar(binding.toolbar)
         bottomNav = findViewById(R.id.bottomNav)
 
         navController =
@@ -102,19 +99,19 @@ class MainActivity : AppCompatActivity() {
 
     fun showprogressdialog() {
 
-        binding.progressBar.visibility = View.VISIBLE
-      //  mprogressdaialog = Dialog(this)
-      //  mprogressdaialog!!.setCancelable(false)
-      //  mprogressdaialog!!.setContentView(R.layout.progress_dialog)
+//        binding.progressBar.visibility = View.VISIBLE
+        //  mprogressdaialog = Dialog(this)
+        //  mprogressdaialog!!.setCancelable(false)
+        //  mprogressdaialog!!.setContentView(R.layout.progress_dialog)
 
-      //  mprogressdaialog!!.show()
+        //  mprogressdaialog!!.show()
     }
 
     fun hideprogressdialog() {
         Log.e("tesssst","entred")
         //  recreate()
-       // mprogressdaialog!!.dismiss()
-        binding.progressBar.visibility = View.GONE
+        // mprogressdaialog!!.dismiss()
+//        binding.progressBar.visibility = View.GONE
         recreate()
 
     }

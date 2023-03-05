@@ -1,6 +1,7 @@
 package com.messages.abdallah.mymessages.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.messages.abdallah.mymessages.api.ApiService
 import com.messages.abdallah.mymessages.databinding.FragmentSecondBinding
 import com.messages.abdallah.mymessages.db.LocaleSource
 import com.messages.abdallah.mymessages.models.FavoriteModel
+import com.messages.abdallah.mymessages.models.MsgModelWithTitle
 import com.messages.abdallah.mymessages.repository.MsgsRepo
 import com.messages.abdallah.mymessages.ui.MainActivity
 import kotlinx.coroutines.launch
@@ -27,7 +29,6 @@ class SecondFragment : Fragment() {
     private val binding get() = _binding!!
     private var argsId = -1
     private var MsgTypes_name = ""
-
 
     private val msgsAdapter by lazy { Msgs_Adapter() }
 
@@ -71,11 +72,22 @@ class SecondFragment : Fragment() {
     }
 
     private fun adapterOnClick(){
-        var fav= emptyList<FavoriteModel>()
 
-        msgsAdapter.onItemClick = {
-            Toast.makeText(requireContext(), "ششششش", Toast.LENGTH_LONG).show()
-            viewModel.add_fav(fav)
+        msgsAdapter.onItemClick = { it: MsgModelWithTitle, i: Int ->
+            val fav= FavoriteModel(it.msgModel!!.id,it.msgModel!!.MessageName,it.typeTitle,it.msgModel!!.new_msgs,it.msgModel!!.ID_Type_id)
+            // check if item is favorite or not
+            if (it.msgModel!!.is_fav){
+                viewModel.update_fav(it.msgModel!!.id,false) // update favorite item state
+                viewModel.delete_fav(fav) //delete item from db
+                Toast.makeText(requireContext(),"item removed from favorites",Toast.LENGTH_SHORT).show()
+                setUpRv()
+            }else{
+                viewModel.add_fav(fav) // add item to db
+                viewModel.update_fav(it.msgModel!!.id,true)
+                Toast.makeText(requireContext(),"item added to favorites",Toast.LENGTH_SHORT).show()
+                setUpRv()
+            }
+
         }
     }
 
@@ -86,12 +98,14 @@ class SecondFragment : Fragment() {
 //            setHasFixedSize(true)
 //        }
 
+
         viewModel.getMsgsFromRoom_by_id(argsId,requireContext()).observe(viewLifecycleOwner) { listShows ->
             msgsAdapter.stateRestorationPolicy=RecyclerView.Adapter.StateRestorationPolicy.ALLOW
-            if(binding.rcMsgs.adapter == null) {
+
                 msgsAdapter.msgsModel = listShows
                 binding.rcMsgs.adapter = msgsAdapter
-            }
+                Log.e("tessst","enter111")
+
         }
     }
 }
