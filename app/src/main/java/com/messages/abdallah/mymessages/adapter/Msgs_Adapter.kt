@@ -50,9 +50,6 @@ class Msgs_Adapter : RecyclerView.Adapter<Msgs_Adapter.MyViewHolder>() {
         }
 
 
-
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(MsgsDesignBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
@@ -76,8 +73,10 @@ class Msgs_Adapter : RecyclerView.Adapter<Msgs_Adapter.MyViewHolder>() {
             // check if the item is favorite or not
             if (current_msgsModel.msgModel!!.is_fav){
                 favBtn.setImageResource(R.drawable.baseline_favorite_true)
+
             }else{
                 favBtn.setImageResource(R.drawable.baseline_favorite_border_false)
+
             }
         }
     }

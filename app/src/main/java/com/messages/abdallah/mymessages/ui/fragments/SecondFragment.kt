@@ -30,7 +30,7 @@ class SecondFragment : Fragment() {
     private var argsId = -1
     private var MsgTypes_name = ""
 
-    private val msgsAdapter by lazy { Msgs_Adapter() }
+    lateinit var  msgsAdapter :Msgs_Adapter
 
     private val retrofitService = ApiService.provideRetrofitInstance()
 
@@ -45,7 +45,8 @@ class SecondFragment : Fragment() {
         argsId = SecondFragmentArgs.fromBundle(requireArguments()).id
 //        MsgTypes_name = SecondFragmentArgs.fromBundle(requireArguments()).msgType
         (activity as MainActivity).fragment = 2
-       // (activity as MainActivity).id = argsId
+        msgsAdapter = Msgs_Adapter()
+        // (activity as MainActivity).id = argsId
     }
 
     override fun onCreateView(
@@ -81,11 +82,13 @@ class SecondFragment : Fragment() {
                 viewModel.delete_fav(fav) //delete item from db
                 Toast.makeText(requireContext(),"item removed from favorites",Toast.LENGTH_SHORT).show()
                 setUpRv()
+                msgsAdapter.notifyDataSetChanged()
             }else{
-                viewModel.add_fav(fav) // add item to db
                 viewModel.update_fav(it.msgModel!!.id,true)
+                viewModel.add_fav(fav) // add item to db
                 Toast.makeText(requireContext(),"item added to favorites",Toast.LENGTH_SHORT).show()
                 setUpRv()
+                msgsAdapter.notifyDataSetChanged()
             }
 
         }
@@ -100,11 +103,10 @@ class SecondFragment : Fragment() {
 
 
         viewModel.getMsgsFromRoom_by_id(argsId,requireContext()).observe(viewLifecycleOwner) { listShows ->
-            msgsAdapter.stateRestorationPolicy=RecyclerView.Adapter.StateRestorationPolicy.ALLOW
-
-                msgsAdapter.msgsModel = listShows
-                binding.rcMsgs.adapter = msgsAdapter
-                Log.e("tessst","enter111")
+            //  msgsAdapter.stateRestorationPolicy=RecyclerView.Adapter.StateRestorationPolicy.ALLOW
+            msgsAdapter.msgsModel = listShows
+            binding.rcMsgs.adapter = msgsAdapter
+            Log.e("tessst","enter111")
 
         }
     }

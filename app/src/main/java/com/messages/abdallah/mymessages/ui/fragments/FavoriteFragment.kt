@@ -83,10 +83,11 @@ class FavoriteFragment : Fragment() {
                     msgfavadapter.msgs_fav_list = listTvShows
                     binding.rcMsgFav.layoutManager = LinearLayoutManager(requireActivity())
                     binding.rcMsgFav.adapter = msgfavadapter
-                } else
-                    // update adapter list
-                    msgfavadapter.msgs_fav_list = listTvShows
                     msgfavadapter.notifyDataSetChanged()
+                } else
+                // update adapter list
+                    msgfavadapter.msgs_fav_list = listTvShows
+                msgfavadapter.notifyDataSetChanged()
             }
 
     }

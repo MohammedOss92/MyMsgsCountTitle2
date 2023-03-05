@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/firsFragment"
         android:name="com.messages.abdallah.mymessages.ui.fragments.FirstFragment"
-        android:label="fragment_firs"
+        android:label="@string/aa"
         tools:layout="@layout/fragment_first" >
         <action
             android:id="@+id/action_firsFragment_to_secondFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.messages.abdallah.mymessages.ui.fragments.SecondFragment"
-        android:label="fragment_second"
+        android:label="@string/aa"
         tools:layout="@layout/fragment_second" >
         <argument
             android:name="id"
