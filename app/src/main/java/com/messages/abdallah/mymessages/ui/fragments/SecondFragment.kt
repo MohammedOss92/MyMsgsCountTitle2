@@ -45,7 +45,7 @@ class SecondFragment : Fragment() {
         argsId = SecondFragmentArgs.fromBundle(requireArguments()).id
 //        MsgTypes_name = SecondFragmentArgs.fromBundle(requireArguments()).msgType
         (activity as MainActivity).fragment = 2
-        msgsAdapter = Msgs_Adapter()
+        msgsAdapter = Msgs_Adapter(requireContext())
         // (activity as MainActivity).id = argsId
     }
 

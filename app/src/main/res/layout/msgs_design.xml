@@ -45,6 +45,14 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="28dp"
+            android:id="@+id/more_btn"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/fav_btn"
+            android:src="@drawable/more"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="28dp"
             android:id="@+id/fav_btn"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/new_Msg_m"
