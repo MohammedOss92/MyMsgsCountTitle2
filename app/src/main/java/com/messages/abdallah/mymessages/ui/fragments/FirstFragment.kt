@@ -28,6 +28,7 @@ import com.messages.abdallah.mymessages.repository.MsgsTypesRepo
 import com.messages.abdallah.mymessages.ui.MainActivity
 
 import kotlinx.coroutines.launch
+import java.util.*
 
 class FirstFragment : Fragment() {
     private lateinit var _binding : FragmentFirstBinding
@@ -65,7 +66,7 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        menu_item()
+
         setUpRv()
         adapterOnClick()
     }
@@ -83,17 +84,7 @@ class FirstFragment : Fragment() {
 
     private fun setUpRv() = viewModel.viewModelScope.launch {
 
-//        binding.rcMsgTypes.apply {
-//            adapter = msgstypesAdapter
-//            setHasFixedSize(true)
-//        }
 
-
-
-//        viewModel.getAllMsgsTypes().observe(viewLifecycleOwner) { listShows ->
-//            msgstypesAdapter.msgsTypesModel = listShows
-//            binding.rcMsgTypes.adapter = msgstypesAdapter
-//        }
 
         viewModel.getPostsFromRoomWithCounts(requireContext() as MainActivity).observe(requireActivity()) { listTvShows ->
        //     Log.e("tessst",listTvShows.size.toString()+"  adapter")
@@ -108,60 +99,36 @@ class FirstFragment : Fragment() {
 
         }
 
-//        viewModel.getAllMsgsTypes().observe(viewLifecycleOwner) { listShows ->
-//            msgstypesAdapter.msgsTypesModel = listShows
-//            binding.rcMsgTypes.adapter = msgstypesAdapter
-//        }
+    }
+
+
+
+
+
+
+
+//    private fun menu_item() {
+//        // The usage of an interface lets you inject your own implementation
+//        val menuHost: MenuHost = requireActivity()
+//        menuHost.addMenuProvider(object : MenuProvider {
+//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+//                // Add menu items here
+//                menuInflater.inflate(R.menu.first_frag_menu, menu)
+//            }
 //
-
-
-    }
-
-    /*
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        val inflater = inflater
-        inflater.inflate(R.menu.first_frag_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.refresh -> {
-                    viewModel.refreshPosts()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-
-     */
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-    }
-
-    private fun menu_item() {
-        // The usage of an interface lets you inject your own implementation
-        val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                // Add menu items here
-                menuInflater.inflate(R.menu.first_frag_menu, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-
-                when(menuItem.itemId){
-                    R.id.action_refresh -> {
-                        viewModel.refreshPosts(requireActivity() as MainActivity)
-                    }
-
-                }
-                return true
-            }
-
-        },viewLifecycleOwner, Lifecycle.State.RESUMED)
-    }
+//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+//
+//                when(menuItem.itemId){
+//                    R.id.action_refresh -> {
+//                        viewModel.refreshPosts(requireActivity() as MainActivity)
+//                    }
+//
+//                }
+//                return true
+//            }
+//
+//        },viewLifecycleOwner, Lifecycle.State.RESUMED)
+//    }
 
     fun showprogressdialog() {
 

@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -23,6 +24,8 @@ import com.messages.abdallah.mymessages.databinding.ActivityMainBinding
 import com.messages.abdallah.mymessages.db.LocaleSource
 import com.messages.abdallah.mymessages.repository.MsgsRepo
 import com.messages.abdallah.mymessages.repository.MsgsTypesRepo
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -89,6 +92,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_refresh -> {
+
                 viewModel.refreshPosts(this)
 
                 true
@@ -99,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 
     fun showprogressdialog() {
 
-//        binding.progressBar.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.VISIBLE
         //  mprogressdaialog = Dialog(this)
         //  mprogressdaialog!!.setCancelable(false)
         //  mprogressdaialog!!.setContentView(R.layout.progress_dialog)
@@ -111,7 +115,7 @@ class MainActivity : AppCompatActivity() {
         Log.e("tesssst","entred")
         //  recreate()
         // mprogressdaialog!!.dismiss()
-//        binding.progressBar.visibility = View.GONE
+        binding.progressBar.visibility = View.GONE
         recreate()
 
     }
@@ -133,20 +137,5 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        return when (item.itemId) {
-//            R.id.refresh -> {
-//                GlobalScope.launch(GlobalScope.coroutineContext) {
-//
-//                    viewModel.refreshPosts()
-//                    true
-//                }
-//
-//                else -> super.onOptionsItemSelected(item)
-//            }
-//        }
-//    }
+
 }
