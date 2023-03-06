@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyMsgsCountTitle.iml" filepath="$PROJECT_DIR$/.idea/modules/MyMsgsCountTitle.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyMsgsCountTitle2.iml" filepath="$PROJECT_DIR$/.idea/modules/MyMsgsCountTitle2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle2.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle2.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle2.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle2.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle2.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle2.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle2.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyMsgsCountTitle2.app.unitTest.iml" />
     </modules>
   </component>
 </project>

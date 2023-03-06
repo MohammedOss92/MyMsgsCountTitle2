@@ -69,6 +69,7 @@ class FirstFragment : Fragment() {
 
         setUpRv()
         adapterOnClick()
+        menu_item()
     }
 
     private fun adapterOnClick(){
@@ -107,28 +108,28 @@ class FirstFragment : Fragment() {
 
 
 
-//    private fun menu_item() {
-//        // The usage of an interface lets you inject your own implementation
-//        val menuHost: MenuHost = requireActivity()
-//        menuHost.addMenuProvider(object : MenuProvider {
-//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-//                // Add menu items here
-//                menuInflater.inflate(R.menu.first_frag_menu, menu)
-//            }
-//
-//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-//
-//                when(menuItem.itemId){
-//                    R.id.action_refresh -> {
-//                        viewModel.refreshPosts(requireActivity() as MainActivity)
-//                    }
-//
-//                }
-//                return true
-//            }
-//
-//        },viewLifecycleOwner, Lifecycle.State.RESUMED)
-//    }
+    private fun menu_item() {
+        // The usage of an interface lets you inject your own implementation
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                // Add menu items here
+                menuInflater.inflate(R.menu.first_frag_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+
+                when(menuItem.itemId){
+                    R.id.action_refresh -> {
+                        viewModel.refreshPosts(requireActivity() as MainActivity)
+                    }
+
+                }
+                return true
+            }
+
+        },viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
 
     fun showprogressdialog() {
 

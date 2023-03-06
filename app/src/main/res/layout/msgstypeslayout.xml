@@ -30,8 +30,7 @@
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:paddingRight="15dp"
-            android:background="@drawable/card_background_selector"
-            android:descendantFocusability="afterDescendants">
+            >
 
 
             <TextView
