@@ -63,9 +63,9 @@ class FavoriteFragment : Fragment() {
 
         msgfavadapter.onItemClick = {
             viewModel.viewModelScope.launch {
-                viewModel.delete_fav(it)   // delete favorite item from db
-                Toast.makeText(requireContext(),"item removed from favorites",Toast.LENGTH_SHORT).show()
                 viewModel.update_fav(it.id,false) // update item state
+                val result = mainRepository.deleteFav(it)   // delete favorite item from db
+                Toast.makeText(requireContext(),"item removed from favorites",Toast.LENGTH_SHORT).show()
                 setUpRv()
             }
 
@@ -76,18 +76,11 @@ class FavoriteFragment : Fragment() {
     private fun setUpRv() = viewModel.viewModelScope.launch {
 
         viewModel.getFav()
-            .observe(requireActivity()) { listTvShows ->
+            .observe(viewLifecycleOwner) { listTvShows ->
                 //     Log.e("tessst",listTvShows.size.toString()+"  adapter")
                 // msgfavadapter.stateRestorationPolicy= RecyclerView.Adapter.StateRestorationPolicy.ALLOW
-                if (binding.rcMsgFav.adapter == null) {
-                    msgfavadapter.msgs_fav_list = listTvShows
-                    binding.rcMsgFav.layoutManager = LinearLayoutManager(requireActivity())
-                    binding.rcMsgFav.adapter = msgfavadapter
-                    msgfavadapter.notifyDataSetChanged()
-                } else
-                // update adapter list
-                    msgfavadapter.msgs_fav_list = listTvShows
-                msgfavadapter.notifyDataSetChanged()
+                msgfavadapter.msgs_fav_list = listTvShows
+                binding.rcMsgFav.adapter = msgfavadapter
             }
 
     }
