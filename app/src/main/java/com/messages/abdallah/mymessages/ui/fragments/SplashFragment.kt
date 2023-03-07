@@ -28,6 +28,7 @@ class SplashFragment : Fragment() {
         Handler(Looper.myLooper()!!).postDelayed({
             val direction = SplashFragmentDirections.actionSplashFragmentToFirsFragment()
             findNavController().navigate(direction)
+
         },5000)
 
         return binding.root

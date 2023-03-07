@@ -89,14 +89,19 @@ class FirstFragment : Fragment() {
 
         viewModel.getPostsFromRoomWithCounts(requireContext() as MainActivity).observe(requireActivity()) { listTvShows ->
        //     Log.e("tessst",listTvShows.size.toString()+"  adapter")
-            msgstypesAdapter.stateRestorationPolicy= RecyclerView.Adapter.StateRestorationPolicy.ALLOW
+//            msgstypesAdapter.stateRestorationPolicy= RecyclerView.Adapter.StateRestorationPolicy.ALLOW
+//
+//            if(binding.rcMsgTypes.adapter == null){
+//                msgstypesAdapter.msgsTypesModel = listTvShows
+//                binding.rcMsgTypes.layoutManager = LinearLayoutManager(requireContext())
+//                binding.rcMsgTypes.adapter = msgstypesAdapter
+//            }
 
-            if(binding.rcMsgTypes.adapter == null){
-                msgstypesAdapter.msgsTypesModel = listTvShows
+            msgstypesAdapter.msgsTypesModel=listTvShows
+            if(binding.rcMsgTypes.adapter == null) {
                 binding.rcMsgTypes.layoutManager = LinearLayoutManager(requireContext())
                 binding.rcMsgTypes.adapter = msgstypesAdapter
             }
-
 
         }
 
