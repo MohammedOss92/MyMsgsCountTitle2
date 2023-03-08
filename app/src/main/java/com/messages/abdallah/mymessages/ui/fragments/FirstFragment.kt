@@ -4,6 +4,8 @@ import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -14,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.messages.abdallah.mymessages.R
+import com.messages.abdallah.mymessages.SharedPref
 import com.messages.abdallah.mymessages.ViewModel.MsgsTypesViewModel
 import com.messages.abdallah.mymessages.ViewModel.MsgsViewModel
 import com.messages.abdallah.mymessages.ViewModel.MyViewModelFactory
@@ -32,10 +35,11 @@ import java.util.*
 
 class FirstFragment : Fragment() {
     private lateinit var _binding : FragmentFirstBinding
-    private val binding get() = _binding!!
-
+    private val binding get() = _binding
+    var isDark = true
+    lateinit var rootLayout: ConstraintLayout
     var mprogressdaialog: Dialog? = null
-    private val msgstypesAdapter by lazy {  MsgsTypes_Adapter() }
+    private val msgstypesAdapter by lazy {  MsgsTypes_Adapter(isDark) }
 
     private val retrofitService = ApiService.provideRetrofitInstance()
     private val mainRepository2 by lazy {  MsgsRepo(retrofitService, LocaleSource(requireContext())) }
@@ -89,19 +93,14 @@ class FirstFragment : Fragment() {
 
         viewModel.getPostsFromRoomWithCounts(requireContext() as MainActivity).observe(requireActivity()) { listTvShows ->
        //     Log.e("tessst",listTvShows.size.toString()+"  adapter")
-//            msgstypesAdapter.stateRestorationPolicy= RecyclerView.Adapter.StateRestorationPolicy.ALLOW
-//
-//            if(binding.rcMsgTypes.adapter == null){
-//                msgstypesAdapter.msgsTypesModel = listTvShows
-//                binding.rcMsgTypes.layoutManager = LinearLayoutManager(requireContext())
-//                binding.rcMsgTypes.adapter = msgstypesAdapter
-//            }
+            msgstypesAdapter.stateRestorationPolicy= RecyclerView.Adapter.StateRestorationPolicy.ALLOW
 
-            msgstypesAdapter.msgsTypesModel=listTvShows
-            if(binding.rcMsgTypes.adapter == null) {
+            if(binding.rcMsgTypes.adapter == null){
+                msgstypesAdapter.msgsTypesModel = listTvShows
                 binding.rcMsgTypes.layoutManager = LinearLayoutManager(requireContext())
                 binding.rcMsgTypes.adapter = msgstypesAdapter
             }
+
 
         }
 
@@ -127,6 +126,19 @@ class FirstFragment : Fragment() {
                 when(menuItem.itemId){
                     R.id.action_refresh -> {
                         viewModel.refreshPosts(requireActivity() as MainActivity)
+                    }
+
+                    R.id.action_theme -> {
+
+                        val prefs = SharedPref(requireContext())
+                        val isDark = prefs.getThemeStatePref()
+                        prefs.saveThemeStatePref(!isDark)
+                        if(isDark){
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                        }
+                        else{
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                        }
                     }
 
                 }
@@ -164,5 +176,7 @@ class FirstFragment : Fragment() {
         //  if (mprogressdaialog != null && mprogressdaialog!!.isShowing) mprogressdaialog!!.dismiss()
         super.onStop()
     }
+
+
 
 }

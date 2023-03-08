@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.messages.abdallah.mymessages.R
 import com.messages.abdallah.mymessages.databinding.MsgstypeslayoutBinding
-import com.messages.abdallah.mymessages.databinding.TypesLayBinding
 import com.messages.abdallah.mymessages.models.MsgsTypeWithCount
-import com.messages.abdallah.mymessages.models.MsgsTypesModel
 
-class MsgsTypes_Adapter : RecyclerView.Adapter<MsgsTypes_Adapter.MyViewHolder>() {
-
+class MsgsTypes_Adapter(var isdark:Boolean) : RecyclerView.Adapter<MsgsTypes_Adapter.MyViewHolder>() {
+//    var isdark = false
+//    constructor(isdark:Boolean) : this() {
+//        this.isdark=isdark
+//    }
 //    var onItemClick: ((Int,String) -> Unit)? = null
     var onItemClick: ((Int) -> Unit)? = null
 

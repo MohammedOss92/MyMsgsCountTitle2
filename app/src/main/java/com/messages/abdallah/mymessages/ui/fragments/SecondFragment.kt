@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 class SecondFragment : Fragment() {
 
     private lateinit var _binding : FragmentSecondBinding
-    private val binding get() = _binding!!
+    private val binding get() = _binding
     private var argsId = -1
     private var MsgTypes_name = ""
 
