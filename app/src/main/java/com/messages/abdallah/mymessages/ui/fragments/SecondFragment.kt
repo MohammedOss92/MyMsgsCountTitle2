@@ -1,32 +1,21 @@
 package com.messages.abdallah.mymessages.ui.fragments
 
-import android.content.ClipData
-import android.content.Context
-import android.os.Build
 import android.os.Bundle
-import android.text.ClipboardManager
 import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.messages.abdallah.mymessages.R
-import com.messages.abdallah.mymessages.SharedPref
-import com.messages.abdallah.mymessages.Utils
 import com.messages.abdallah.mymessages.ViewModel.MsgsViewModel
 import com.messages.abdallah.mymessages.ViewModel.ViewModelFactory
 import com.messages.abdallah.mymessages.adapter.Msgs_Adapter
+import com.messages.abdallah.mymessages.adapter.CallBack
 import com.messages.abdallah.mymessages.api.ApiService
 import com.messages.abdallah.mymessages.databinding.FragmentSecondBinding
 import com.messages.abdallah.mymessages.db.LocaleSource
@@ -37,7 +26,7 @@ import com.messages.abdallah.mymessages.ui.MainActivity
 import kotlinx.coroutines.launch
 
 
-class SecondFragment : Fragment() {
+class SecondFragment : Fragment() , CallBack {
 
     private lateinit var _binding : FragmentSecondBinding
     private val binding get() = _binding
@@ -177,5 +166,9 @@ class SecondFragment : Fragment() {
             }
 
         },viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    override fun OnClickListener() {
+
     }
 }

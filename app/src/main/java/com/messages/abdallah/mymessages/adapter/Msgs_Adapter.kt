@@ -88,6 +88,7 @@ class Msgs_Adapter(val con:Context,val frag:Fragment) : RecyclerView.Adapter<Msg
                     }
                     R.id.edit ->{
                         Toast.makeText(con, "edit", Toast.LENGTH_SHORT).show()
+
                         val direction = SecondFragmentDirections.actionSecondFragmentToEditFragment(
                             binding.tvMsgM.text.toString()
                         )
