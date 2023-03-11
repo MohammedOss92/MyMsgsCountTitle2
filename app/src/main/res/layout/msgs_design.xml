@@ -9,7 +9,6 @@
     app:cardCornerRadius="20dp"
     android:layout_margin="5dp"
     android:layout_marginBottom="1dp"
-    app:cardBackgroundColor="@color/card_bg_color"
     app:cardMaxElevation="5dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true"
@@ -78,7 +77,7 @@
             android:layout_height="28dp"
             android:id="@+id/new_Msg_m"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/copy"
+            android:layout_toLeftOf="@+id/fav_btn"
             android:src="@drawable/new_msg"
             android:visibility="invisible"/>
 

@@ -23,8 +23,8 @@ import com.messages.abdallah.mymessages.ViewModel.MyViewModelFactory
 import com.messages.abdallah.mymessages.ViewModel.ViewModelFactory
 import com.messages.abdallah.mymessages.adapter.MsgsTypes_Adapter
 import com.messages.abdallah.mymessages.api.ApiService
-
 import com.messages.abdallah.mymessages.databinding.FragmentFirstBinding
+
 import com.messages.abdallah.mymessages.db.LocaleSource
 import com.messages.abdallah.mymessages.repository.MsgsRepo
 import com.messages.abdallah.mymessages.repository.MsgsTypesRepo

@@ -12,6 +12,10 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -19,10 +23,16 @@ import com.messages.abdallah.mymessages.R
 import com.messages.abdallah.mymessages.Utils
 import com.messages.abdallah.mymessages.databinding.MsgsDesignBinding
 import com.messages.abdallah.mymessages.models.MsgModelWithTitle
+import com.messages.abdallah.mymessages.models.MsgsModel
+import com.messages.abdallah.mymessages.ui.fragments.FirstFragmentDirections
+import androidx.navigation.fragment.findNavController
+import com.messages.abdallah.mymessages.ui.fragments.SecondFragmentDirections
 
-class Msgs_Adapter(val con:Context) : RecyclerView.Adapter<Msgs_Adapter.MyViewHolder>() {
+
+class Msgs_Adapter(val con:Context,val frag:Fragment) : RecyclerView.Adapter<Msgs_Adapter.MyViewHolder>() {
 
     var onItemClick: ((item:MsgModelWithTitle,position:Int) -> Unit)? = null
+    var onClick: ((Unit) -> Unit)? = null
 
     @SuppressLint("NotifyDataSetChanged")
     inner class MyViewHolder(val binding: MsgsDesignBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -36,21 +46,23 @@ class Msgs_Adapter(val con:Context) : RecyclerView.Adapter<Msgs_Adapter.MyViewHo
             }
 
             binding.moreBtn.setOnClickListener{popupMenus(it)}
+//            binding.moreBtn.setOnClickListener{
+//                onClick?.invoke()
+//            }
+
         }
 
         private fun popupMenus(view: View) {
 
-            val current_msgsModel = msgsModel[position]
             val popupMenu = PopupMenu(con,view)
             popupMenu.inflate(R.menu.menu_msg)
             popupMenu.setOnMenuItemClickListener {
                 when(it.itemId){
                     R.id.share ->{
-                        val v = LayoutInflater.from(con).inflate(R.layout.msgs_design,null)
-                        val tvMsg = v.findViewById<TextView>(R.id.tvMsg_m)
+
 
                         Utils.IntenteShare(con, "مسجاتي", "مسجاتي",binding.tvMsgM.text.toString() )
-                        Toast.makeText(con, "share", Toast.LENGTH_SHORT).show()
+
                         true
                     }
                     R.id.copy ->{
@@ -72,11 +84,15 @@ class Msgs_Adapter(val con:Context) : RecyclerView.Adapter<Msgs_Adapter.MyViewHo
                             clipboard.setPrimaryClip(clip)
                         }
                         Toast.makeText(con, "تم نسخ النص", Toast.LENGTH_SHORT).show()
-                        Toast.makeText(con, "copy", Toast.LENGTH_SHORT).show()
                         true
                     }
                     R.id.edit ->{
                         Toast.makeText(con, "edit", Toast.LENGTH_SHORT).show()
+                        val direction = SecondFragmentDirections.actionSecondFragmentToEditFragment(
+                            binding.tvMsgM.text.toString()
+                        )
+
+                        findNavController(frag).navigate(direction)
                         true
                     }
 
@@ -85,6 +101,7 @@ class Msgs_Adapter(val con:Context) : RecyclerView.Adapter<Msgs_Adapter.MyViewHo
             }
             popupMenu.show()
         }
+
     }
 
     private val diffCallback = object :DiffUtil.ItemCallback<MsgModelWithTitle>(){
@@ -135,6 +152,8 @@ class Msgs_Adapter(val con:Context) : RecyclerView.Adapter<Msgs_Adapter.MyViewHo
 
             }
         }
+
+
     }
 
     override fun getItemCount(): Int {

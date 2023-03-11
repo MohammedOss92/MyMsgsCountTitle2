@@ -1,15 +1,29 @@
 package com.messages.abdallah.mymessages.ui.fragments
 
+import android.content.ClipData
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.text.ClipboardManager
 import android.util.Log
+import android.view.*
+import android.widget.PopupMenu
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.messages.abdallah.mymessages.R
+import com.messages.abdallah.mymessages.SharedPref
+import com.messages.abdallah.mymessages.Utils
 import com.messages.abdallah.mymessages.ViewModel.MsgsViewModel
 import com.messages.abdallah.mymessages.ViewModel.ViewModelFactory
 import com.messages.abdallah.mymessages.adapter.Msgs_Adapter
@@ -45,7 +59,7 @@ class SecondFragment : Fragment() {
         argsId = SecondFragmentArgs.fromBundle(requireArguments()).id
 //        MsgTypes_name = SecondFragmentArgs.fromBundle(requireArguments()).msgType
         (activity as MainActivity).fragment = 2
-        msgsAdapter = Msgs_Adapter(requireContext())
+        msgsAdapter = Msgs_Adapter(requireContext(),this)
         // (activity as MainActivity).id = argsId
     }
 
@@ -62,8 +76,11 @@ class SecondFragment : Fragment() {
         //Toast.makeText(requireContext(), argsId.toString(), Toast.LENGTH_LONG).show()
         //Toast.makeText(requireContext(), MsgTypes_name, Toast.LENGTH_LONG).show()
 
+
+
         setUpRv()
         adapterOnClick()
+        menu_item()
 
     }
 
@@ -92,6 +109,33 @@ class SecondFragment : Fragment() {
             }
 
         }
+
+//        msgsAdapter.onClick={popupMenus(requireView())}
+
+
+
+
+    }
+
+    private fun popupMenus(view: View) {
+
+        val popupMenu = PopupMenu(requireContext(),view)
+        popupMenu.inflate(R.menu.menu_msg)
+        popupMenu.setOnMenuItemClickListener {
+            when(it.itemId){
+
+                R.id.edit ->{
+//                    Toast.makeText(requireContext(), "edit", Toast.LENGTH_SHORT).show()
+//                    val direction = SecondFragmentDirections.actionSecondFragmentToEditFragment()
+//
+//                    NavHostFragment.findNavController(this).navigate(direction)
+                    true
+                }
+
+                else -> true
+            }
+        }
+        popupMenu.show()
     }
 
     private  fun setUpRv() = viewModel.viewModelScope.launch {
@@ -109,5 +153,29 @@ class SecondFragment : Fragment() {
             Log.e("tessst","enter111")
 
         }
+    }
+
+    private fun menu_item() {
+        // The usage of an interface lets you inject your own implementation
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                // Add menu items here
+                menuInflater.inflate(R.menu.second_frag_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+
+                when(menuItem.itemId){
+
+
+
+
+                }
+                return true
+            }
+
+        },viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 }

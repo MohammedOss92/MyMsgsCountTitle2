@@ -30,6 +30,7 @@ class MsgsTypes_Adapter(var isdark:Boolean) : RecyclerView.Adapter<MsgsTypes_Ada
 
     }
 
+
     private val diffCallback = object : DiffUtil.ItemCallback<MsgsTypeWithCount>(){
         override fun areItemsTheSame(oldItem: MsgsTypeWithCount, newItem: MsgsTypeWithCount): Boolean {
             return oldItem.msgTypes?.id == newItem.msgTypes?.id
