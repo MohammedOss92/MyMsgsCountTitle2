@@ -16,6 +16,7 @@ import com.messages.abdallah.mymessages.ViewModel.MsgsTypesViewModel
 import com.messages.abdallah.mymessages.ViewModel.MsgsViewModel
 import com.messages.abdallah.mymessages.ViewModel.MyViewModelFactory
 import com.messages.abdallah.mymessages.ViewModel.ViewModelFactory
+import com.messages.abdallah.mymessages.adapter.Msgs_Adapter
 import com.messages.abdallah.mymessages.adapter.Msgs_Fav_Adapter
 import com.messages.abdallah.mymessages.api.ApiService
 import com.messages.abdallah.mymessages.databinding.FragmentFavoriteBinding
@@ -31,7 +32,7 @@ class FavoriteFragment : Fragment() {
     private lateinit var _binding: FragmentFavoriteBinding
     private val binding get() = _binding!!
 
-    private val msgfavadapter by lazy { Msgs_Fav_Adapter(requireContext()) }
+    lateinit var msgfavadapter :Msgs_Fav_Adapter
 
     private val retrofitService = ApiService.provideRetrofitInstance()
 
@@ -48,6 +49,8 @@ class FavoriteFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         (activity as MainActivity).fragment = 1
+        msgfavadapter = Msgs_Fav_Adapter(requireContext(),this /*,this*/ )
+
         setUpRv()
         adapterOnClick()
         return binding.root
@@ -79,8 +82,18 @@ class FavoriteFragment : Fragment() {
             .observe(viewLifecycleOwner) { listTvShows ->
                 //     Log.e("tessst",listTvShows.size.toString()+"  adapter")
                 // msgfavadapter.stateRestorationPolicy= RecyclerView.Adapter.StateRestorationPolicy.ALLOW
-                msgfavadapter.msgs_fav_list = listTvShows
-                binding.rcMsgFav.adapter = msgfavadapter
+//                msgfavadapter.msgs_fav_list = listTvShows
+//                binding.rcMsgFav.adapter = msgfavadapter
+                msgfavadapter.stateRestorationPolicy= RecyclerView.Adapter.StateRestorationPolicy.ALLOW
+//            msgsAdapter.msgsModel = listShows
+//            binding.rcMsgs.adapter = msgsAdapter
+                msgfavadapter.notifyDataSetChanged()
+                if(binding.rcMsgFav.adapter == null){
+                    msgfavadapter.msgs_fav_list = listTvShows
+                    binding.rcMsgFav.layoutManager = LinearLayoutManager(requireContext())
+                    binding.rcMsgFav.adapter = msgfavadapter
+                    msgfavadapter.notifyDataSetChanged()
+                }
             }
 
     }

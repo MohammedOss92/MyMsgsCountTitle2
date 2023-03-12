@@ -39,7 +39,7 @@ class FirstFragment : Fragment() {
     var isDark = true
     lateinit var rootLayout: ConstraintLayout
     var mprogressdaialog: Dialog? = null
-    private val msgstypesAdapter by lazy {  MsgsTypes_Adapter(isDark) }
+    private val msgstypesAdapter by lazy {  MsgsTypes_Adapter(/*isDark*/) }
 
     private val retrofitService = ApiService.provideRetrofitInstance()
     private val mainRepository2 by lazy {  MsgsRepo(retrofitService, LocaleSource(requireContext())) }

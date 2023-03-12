@@ -19,6 +19,7 @@ class EditFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MsgTypes_name = EditFragmentArgs.fromBundle(requireArguments()).msgname
+//        MsgTypes_name = EditFragmentArgs.fromBundle(requireArguments()).a
     }
 
     override fun onCreateView(
@@ -31,7 +32,7 @@ class EditFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Toast.makeText(requireContext(), MsgTypes_name, Toast.LENGTH_LONG).show()
+//        Toast.makeText(requireContext(), MsgTypes_name, Toast.LENGTH_LONG).show()
         val editText = view.findViewById<EditText>(R.id.intext)
 
         editText.setText(MsgTypes_name)

@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -19,8 +21,9 @@ import com.messages.abdallah.mymessages.databinding.MsgsDesignBinding
 import com.messages.abdallah.mymessages.databinding.MsgsFavDeBinding
 import com.messages.abdallah.mymessages.models.FavoriteModel
 import com.messages.abdallah.mymessages.models.MsgModelWithTitle
+import com.messages.abdallah.mymessages.ui.fragments.FavoriteFragmentDirections
 
-class Msgs_Fav_Adapter(val con:Context) : RecyclerView.Adapter<Msgs_Fav_Adapter.MyViewHolder>() {
+class Msgs_Fav_Adapter(val con:Context,var frag:Fragment) : RecyclerView.Adapter<Msgs_Fav_Adapter.MyViewHolder>() {
     var onItemClick: ((fav:FavoriteModel) -> Unit)? = null // pass favorite item on click
 
     inner class MyViewHolder(val binding: MsgsFavDeBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -70,7 +73,10 @@ class Msgs_Fav_Adapter(val con:Context) : RecyclerView.Adapter<Msgs_Fav_Adapter.
                         true
                     }
                     R.id.edit ->{
-                        Toast.makeText(con, "edit", Toast.LENGTH_SHORT).show()
+                        val dir = FavoriteFragmentDirections.actionFavoriteFragmentToEditFragment(
+                            binding.tvMsgM.text.toString()
+                        )
+                        NavHostFragment.findNavController(frag).navigate(dir)
                         true
                     }
 

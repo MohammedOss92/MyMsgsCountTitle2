@@ -29,7 +29,7 @@ import androidx.navigation.fragment.findNavController
 import com.messages.abdallah.mymessages.ui.fragments.SecondFragmentDirections
 
 
-class Msgs_Adapter(val con:Context,val frag:Fragment) : RecyclerView.Adapter<Msgs_Adapter.MyViewHolder>() {
+class Msgs_Adapter(val con:Context,val frag:Fragment /*,var callBack: CallBack*/) : RecyclerView.Adapter<Msgs_Adapter.MyViewHolder>() {
 
     var onItemClick: ((item:MsgModelWithTitle,position:Int) -> Unit)? = null
     var onClick: ((Unit) -> Unit)? = null
@@ -46,6 +46,7 @@ class Msgs_Adapter(val con:Context,val frag:Fragment) : RecyclerView.Adapter<Msg
             }
 
             binding.moreBtn.setOnClickListener{popupMenus(it)}
+//            binding.moreBtn.setOnClickListener{callBack.OnClickListener()}
 //            binding.moreBtn.setOnClickListener{
 //                onClick?.invoke()
 //            }

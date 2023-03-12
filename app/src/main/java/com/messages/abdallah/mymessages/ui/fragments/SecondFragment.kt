@@ -11,6 +11,9 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.messages.abdallah.mymessages.R
 import com.messages.abdallah.mymessages.ViewModel.MsgsViewModel
 import com.messages.abdallah.mymessages.ViewModel.ViewModelFactory
@@ -33,8 +36,8 @@ class SecondFragment : Fragment() , CallBack {
     private var argsId = -1
     private var MsgTypes_name = ""
 
-    lateinit var  msgsAdapter :Msgs_Adapter
-
+//    lateinit var  msgsAdapter :Msgs_Adapter
+    private val msgsAdapter by lazy { Msgs_Adapter(requireContext(),this) }
     private val retrofitService = ApiService.provideRetrofitInstance()
 
     private val mainRepository by lazy {  MsgsRepo(retrofitService, LocaleSource(requireContext())) }
@@ -48,7 +51,7 @@ class SecondFragment : Fragment() , CallBack {
         argsId = SecondFragmentArgs.fromBundle(requireArguments()).id
 //        MsgTypes_name = SecondFragmentArgs.fromBundle(requireArguments()).msgType
         (activity as MainActivity).fragment = 2
-        msgsAdapter = Msgs_Adapter(requireContext(),this)
+//        msgsAdapter = Msgs_Adapter(requireContext(),this /*,this*/ )
         // (activity as MainActivity).id = argsId
     }
 
@@ -106,26 +109,7 @@ class SecondFragment : Fragment() , CallBack {
 
     }
 
-    private fun popupMenus(view: View) {
 
-        val popupMenu = PopupMenu(requireContext(),view)
-        popupMenu.inflate(R.menu.menu_msg)
-        popupMenu.setOnMenuItemClickListener {
-            when(it.itemId){
-
-                R.id.edit ->{
-//                    Toast.makeText(requireContext(), "edit", Toast.LENGTH_SHORT).show()
-//                    val direction = SecondFragmentDirections.actionSecondFragmentToEditFragment()
-//
-//                    NavHostFragment.findNavController(this).navigate(direction)
-                    true
-                }
-
-                else -> true
-            }
-        }
-        popupMenu.show()
-    }
 
     private  fun setUpRv() = viewModel.viewModelScope.launch {
 
@@ -137,8 +121,16 @@ class SecondFragment : Fragment() , CallBack {
 
         viewModel.getMsgsFromRoom_by_id(argsId,requireContext()).observe(viewLifecycleOwner) { listShows ->
             //  msgsAdapter.stateRestorationPolicy=RecyclerView.Adapter.StateRestorationPolicy.ALLOW
-            msgsAdapter.msgsModel = listShows
-            binding.rcMsgs.adapter = msgsAdapter
+            msgsAdapter.stateRestorationPolicy= RecyclerView.Adapter.StateRestorationPolicy.ALLOW
+//            msgsAdapter.msgsModel = listShows
+//            binding.rcMsgs.adapter = msgsAdapter
+            msgsAdapter.notifyDataSetChanged()
+            if(binding.rcMsgs.adapter == null){
+                msgsAdapter.msgsModel = listShows
+                binding.rcMsgs.layoutManager = LinearLayoutManager(requireContext())
+                binding.rcMsgs.adapter = msgsAdapter
+                msgsAdapter.notifyDataSetChanged()
+            }
             Log.e("tessst","enter111")
 
         }
@@ -158,7 +150,10 @@ class SecondFragment : Fragment() , CallBack {
 
                 when(menuItem.itemId){
 
-
+                    R.id.action_zakrafah ->{
+                        val dir = SecondFragmentDirections.actionSecondFragmentToEditFragment("")
+                        NavHostFragment.findNavController(this@SecondFragment).navigate(dir)
+                    }
 
 
                 }
@@ -169,6 +164,22 @@ class SecondFragment : Fragment() , CallBack {
     }
 
     override fun OnClickListener() {
+        val popupMenu = PopupMenu(requireContext(),view)
+        popupMenu.inflate(R.menu.menu_msg)
+        popupMenu.setOnMenuItemClickListener {
+            when(it.itemId){
 
+                R.id.edit ->{
+//                    Toast.makeText(requireContext(), "edit", Toast.LENGTH_SHORT).show()
+//                    val direction = SecondFragmentDirections.actionSecondFragmentToEditFragment()
+//
+//                    NavHostFragment.findNavController(this).navigate(direction)
+                    true
+                }
+
+                else -> true
+            }
+        }
+        popupMenu.show()
     }
 }

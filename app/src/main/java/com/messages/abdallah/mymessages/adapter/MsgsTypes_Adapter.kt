@@ -10,7 +10,7 @@ import com.messages.abdallah.mymessages.R
 import com.messages.abdallah.mymessages.databinding.MsgstypeslayoutBinding
 import com.messages.abdallah.mymessages.models.MsgsTypeWithCount
 
-class MsgsTypes_Adapter(var isdark:Boolean) : RecyclerView.Adapter<MsgsTypes_Adapter.MyViewHolder>() {
+class MsgsTypes_Adapter() : RecyclerView.Adapter<MsgsTypes_Adapter.MyViewHolder>() {
 //    var isdark = false
 //    constructor(isdark:Boolean) : this() {
 //        this.isdark=isdark
