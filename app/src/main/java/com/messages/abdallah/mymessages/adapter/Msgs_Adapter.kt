@@ -66,10 +66,7 @@ class Msgs_Adapter(val con:Context,val frag:Fragment) : RecyclerView.Adapter<Msg
                         true
                     }
                     R.id.copy ->{
-                        val v = LayoutInflater.from(con).inflate(R.layout.msgs_design,null)
-                        val tvMsg = v.findViewById<TextView>(R.id.tvMsg_m)
 
-//                        val stringYouExtracted: String = tvMsg.getText().toString()
                         val stringYouExtracted: String = binding.tvMsgM.text.toString()
 
                         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {

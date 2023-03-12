@@ -1,6 +1,8 @@
 package com.messages.abdallah.mymessages.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.ClipboardManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -828,6 +830,271 @@ class EditFragment : Fragment() {
             out8.setText(o8)
             out9.setText(o9)
         })
+
+
+        copy1.setOnClickListener(View.OnClickListener {
+            (requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE)
+                    as ClipboardManager).text = out1.getText().toString()
+            Toast.makeText(
+                requireActivity().getBaseContext(),
+                "\u062a\u0645 \u0646\u0633\u062e" +
+                        " \u0645\u062d\u062a\u0648\u0649" +
+                        " \u0645\u0631\u0628\u0639 \u0627\u0644\u0646\u0635 \u0627\u0644\u0646\u0627\u062a\u062c",
+                Toast.LENGTH_SHORT
+            ).show()
+        })
+
+
+        copy2.setOnClickListener(View.OnClickListener {
+            (requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE)
+                    as ClipboardManager).text = out1.getText().toString()
+            Toast.makeText(
+                requireActivity().getBaseContext(),
+                "\u062a\u0645 \u0646\u0633\u062e" +
+                        " \u0645\u062d\u062a\u0648\u0649" +
+                        " \u0645\u0631\u0628\u0639 \u0627\u0644\u0646\u0635 \u0627\u0644\u0646\u0627\u062a\u062c",
+                Toast.LENGTH_SHORT
+            ).show()
+        })
+
+
+        copy3.setOnClickListener(View.OnClickListener {
+            (requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE)
+                    as ClipboardManager).text = out1.getText().toString()
+            Toast.makeText(
+                requireActivity().getBaseContext(),
+                "\u062a\u0645 \u0646\u0633\u062e" +
+                        " \u0645\u062d\u062a\u0648\u0649" +
+                        " \u0645\u0631\u0628\u0639 \u0627\u0644\u0646\u0635 \u0627\u0644\u0646\u0627\u062a\u062c",
+                Toast.LENGTH_SHORT
+            ).show()
+        })
+
+
+        copy4.setOnClickListener(View.OnClickListener {
+            (requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE)
+                    as ClipboardManager).text = out1.getText().toString()
+            Toast.makeText(
+                requireActivity().getBaseContext(),
+                "\u062a\u0645 \u0646\u0633\u062e" +
+                        " \u0645\u062d\u062a\u0648\u0649" +
+                        " \u0645\u0631\u0628\u0639 \u0627\u0644\u0646\u0635 \u0627\u0644\u0646\u0627\u062a\u062c",
+                Toast.LENGTH_SHORT
+            ).show()
+        })
+
+
+        copy5.setOnClickListener(View.OnClickListener {
+            (requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE)
+                    as ClipboardManager).text = out1.getText().toString()
+            Toast.makeText(
+                requireActivity().getBaseContext(),
+                "\u062a\u0645 \u0646\u0633\u062e" +
+                        " \u0645\u062d\u062a\u0648\u0649" +
+                        " \u0645\u0631\u0628\u0639 \u0627\u0644\u0646\u0635 \u0627\u0644\u0646\u0627\u062a\u062c",
+                Toast.LENGTH_SHORT
+            ).show()
+        })
+
+
+        copy6.setOnClickListener(View.OnClickListener {
+            (requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE)
+                    as ClipboardManager).text = out1.getText().toString()
+            Toast.makeText(
+                requireActivity().getBaseContext(),
+                "\u062a\u0645 \u0646\u0633\u062e" +
+                        " \u0645\u062d\u062a\u0648\u0649" +
+                        " \u0645\u0631\u0628\u0639 \u0627\u0644\u0646\u0635 \u0627\u0644\u0646\u0627\u062a\u062c",
+                Toast.LENGTH_SHORT
+            ).show()
+        })
+
+
+        copy7.setOnClickListener(View.OnClickListener {
+            (requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE)
+                    as ClipboardManager).text = out1.getText().toString()
+            Toast.makeText(
+                requireActivity().getBaseContext(),
+                "\u062a\u0645 \u0646\u0633\u062e" +
+                        " \u0645\u062d\u062a\u0648\u0649" +
+                        " \u0645\u0631\u0628\u0639 \u0627\u0644\u0646\u0635 \u0627\u0644\u0646\u0627\u062a\u062c",
+                Toast.LENGTH_SHORT
+            ).show()
+        })
+
+
+        copy8.setOnClickListener(View.OnClickListener {
+            (requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE)
+                    as ClipboardManager).text = out1.getText().toString()
+            Toast.makeText(
+                requireActivity().getBaseContext(),
+                "\u062a\u0645 \u0646\u0633\u062e" +
+                        " \u0645\u062d\u062a\u0648\u0649" +
+                        " \u0645\u0631\u0628\u0639 \u0627\u0644\u0646\u0635 \u0627\u0644\u0646\u0627\u062a\u062c",
+                Toast.LENGTH_SHORT
+            ).show()
+        })
+
+
+        copy9.setOnClickListener(View.OnClickListener {
+            (requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE)
+                    as ClipboardManager).text = out1.getText().toString()
+            Toast.makeText(
+                requireActivity().getBaseContext(),
+                "\u062a\u0645 \u0646\u0633\u062e" +
+                        " \u0645\u062d\u062a\u0648\u0649" +
+                        " \u0645\u0631\u0628\u0639 \u0627\u0644\u0646\u0635 \u0627\u0644\u0646\u0627\u062a\u062c",
+                Toast.LENGTH_SHORT
+            ).show()
+        })
+
+        share1.setOnClickListener(View.OnClickListener {
+            val sharingIntent = Intent("android.intent.action.SEND")
+            sharingIntent.type = "text/plain"
+            sharingIntent.putExtra(
+                "android.intent.extra.TEXT",
+                out9.getText().toString()
+            )
+            startActivity(
+                Intent.createChooser(
+                    sharingIntent,
+                    "\u0634\u0627\u0631\u0643 \u0628\u0648\u0627\u0633\u0637\u0629 :"
+                )
+            )
+        })
+
+
+        share2.setOnClickListener(View.OnClickListener {
+            val sharingIntent = Intent("android.intent.action.SEND")
+            sharingIntent.type = "text/plain"
+            sharingIntent.putExtra(
+                "android.intent.extra.TEXT",
+                out9.getText().toString()
+            )
+            startActivity(
+                Intent.createChooser(
+                    sharingIntent,
+                    "\u0634\u0627\u0631\u0643 \u0628\u0648\u0627\u0633\u0637\u0629 :"
+                )
+            )
+        })
+
+
+        share3.setOnClickListener(View.OnClickListener {
+            val sharingIntent = Intent("android.intent.action.SEND")
+            sharingIntent.type = "text/plain"
+            sharingIntent.putExtra(
+                "android.intent.extra.TEXT",
+                out9.getText().toString()
+            )
+            startActivity(
+                Intent.createChooser(
+                    sharingIntent,
+                    "\u0634\u0627\u0631\u0643 \u0628\u0648\u0627\u0633\u0637\u0629 :"
+                )
+            )
+        })
+
+
+        share4.setOnClickListener(View.OnClickListener {
+            val sharingIntent = Intent("android.intent.action.SEND")
+            sharingIntent.type = "text/plain"
+            sharingIntent.putExtra(
+                "android.intent.extra.TEXT",
+                out9.getText().toString()
+            )
+            startActivity(
+                Intent.createChooser(
+                    sharingIntent,
+                    "\u0634\u0627\u0631\u0643 \u0628\u0648\u0627\u0633\u0637\u0629 :"
+                )
+            )
+        })
+
+
+        share5.setOnClickListener(View.OnClickListener {
+            val sharingIntent = Intent("android.intent.action.SEND")
+            sharingIntent.type = "text/plain"
+            sharingIntent.putExtra(
+                "android.intent.extra.TEXT",
+                out9.getText().toString()
+            )
+            startActivity(
+                Intent.createChooser(
+                    sharingIntent,
+                    "\u0634\u0627\u0631\u0643 \u0628\u0648\u0627\u0633\u0637\u0629 :"
+                )
+            )
+        })
+
+
+        share6.setOnClickListener(View.OnClickListener {
+            val sharingIntent = Intent("android.intent.action.SEND")
+            sharingIntent.type = "text/plain"
+            sharingIntent.putExtra(
+                "android.intent.extra.TEXT",
+                out9.getText().toString()
+            )
+            startActivity(
+                Intent.createChooser(
+                    sharingIntent,
+                    "\u0634\u0627\u0631\u0643 \u0628\u0648\u0627\u0633\u0637\u0629 :"
+                )
+            )
+        })
+
+
+        share7.setOnClickListener(View.OnClickListener {
+            val sharingIntent = Intent("android.intent.action.SEND")
+            sharingIntent.type = "text/plain"
+            sharingIntent.putExtra(
+                "android.intent.extra.TEXT",
+                out9.getText().toString()
+            )
+            startActivity(
+                Intent.createChooser(
+                    sharingIntent,
+                    "\u0634\u0627\u0631\u0643 \u0628\u0648\u0627\u0633\u0637\u0629 :"
+                )
+            )
+        })
+
+
+        share8.setOnClickListener(View.OnClickListener {
+            val sharingIntent = Intent("android.intent.action.SEND")
+            sharingIntent.type = "text/plain"
+            sharingIntent.putExtra(
+                "android.intent.extra.TEXT",
+                out9.getText().toString()
+            )
+            startActivity(
+                Intent.createChooser(
+                    sharingIntent,
+                    "\u0634\u0627\u0631\u0643 \u0628\u0648\u0627\u0633\u0637\u0629 :"
+                )
+            )
+        })
+
+
+        share9.setOnClickListener(View.OnClickListener {
+            val sharingIntent = Intent("android.intent.action.SEND")
+            sharingIntent.type = "text/plain"
+            sharingIntent.putExtra(
+                "android.intent.extra.TEXT",
+                out9.getText().toString()
+            )
+            startActivity(
+                Intent.createChooser(
+                    sharingIntent,
+                    "\u0634\u0627\u0631\u0643 \u0628\u0648\u0627\u0633\u0637\u0629 :"
+                )
+            )
+        })
+
+
+
+
+
     }
 
 
