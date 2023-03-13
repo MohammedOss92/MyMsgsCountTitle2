@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.messages.abdallah.mymessages.R
@@ -26,6 +29,23 @@ class SplashFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentSplashBinding.inflate(inflater, container, false)
 
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val tvSplash:TextView =view.findViewById(R.id.mmm)
+        val imgSplash:ImageView =view.findViewById(R.id.imageView)
+//        val slideAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.anim)
+
+//        tvSplash.animate().translationXBy(-1000f).duration=3000
+//        tvSplash.animate().alpha(0.5f)
+        tvSplash.animate().translationYBy(1000f).rotation(360f).duration=3000
+        imgSplash.animate().rotation(360f).duration=3000
+//        tvSplash.startAnimation(slideAnimation)
+
         Handler(Looper.myLooper()!!).postDelayed({
 //            val direction = SplashFragmentDirections.actionSplashFragmentToFirsFragment()
 //            findNavController().navigate(direction)
@@ -39,11 +59,6 @@ class SplashFragment : Fragment() {
 
         },5000)
 
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
 

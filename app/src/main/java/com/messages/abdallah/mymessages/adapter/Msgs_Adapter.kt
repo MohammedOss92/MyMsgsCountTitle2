@@ -43,7 +43,10 @@ class Msgs_Adapter(val con:Context,val frag:Fragment /*,var callBack: CallBack*/
             binding.favBtn.setOnClickListener {
 
                 onItemClick?.invoke(msgsModel[adapterPosition],adapterPosition)
+
             }
+
+
 
             binding.moreBtn.setOnClickListener{popupMenus(it)}
 //            binding.moreBtn.setOnClickListener{callBack.OnClickListener()}
@@ -150,6 +153,7 @@ class Msgs_Adapter(val con:Context,val frag:Fragment /*,var callBack: CallBack*/
                 favBtn.setImageResource(R.drawable.baseline_favorite_border_false)
 
             }
+
         }
 
 

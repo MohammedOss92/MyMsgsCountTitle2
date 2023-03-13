@@ -89,13 +89,14 @@ class SecondFragment : Fragment() , CallBack {
             if (it.msgModel!!.is_fav){
                 viewModel.update_fav(it.msgModel!!.id,false) // update favorite item state
                 viewModel.delete_fav(fav) //delete item from db
-                Toast.makeText(requireContext(),"item removed from favorites",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"تم الحذف من المفضلة",Toast.LENGTH_SHORT).show()
                 setUpRv()
                 msgsAdapter.notifyDataSetChanged()
+
             }else{
                 viewModel.update_fav(it.msgModel!!.id,true)
                 viewModel.add_fav(fav) // add item to db
-                Toast.makeText(requireContext(),"item added to favorites",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"تم الاضافة الى المفضلة",Toast.LENGTH_SHORT).show()
                 setUpRv()
                 msgsAdapter.notifyDataSetChanged()
             }

@@ -72,7 +72,7 @@ class FavoriteFragment : Fragment() {
             viewModel.viewModelScope.launch {
                 viewModel.update_fav(it.id,false) // update item state
                 val result = mainRepository.deleteFav(it)   // delete favorite item from db
-                Toast.makeText(requireContext(),"item removed from favorites",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"تم الحذف من المفضلة",Toast.LENGTH_SHORT).show()
                 setUpRv()
             }
 
