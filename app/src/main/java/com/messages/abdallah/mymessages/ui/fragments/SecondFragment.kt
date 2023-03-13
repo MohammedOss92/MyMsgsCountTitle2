@@ -108,9 +108,6 @@ class SecondFragment : Fragment() , CallBack {
 
 
     }
-
-
-
     private  fun setUpRv() = viewModel.viewModelScope.launch {
 
 //        binding.rcMsgTypes.apply {
@@ -124,17 +121,44 @@ class SecondFragment : Fragment() , CallBack {
             msgsAdapter.stateRestorationPolicy= RecyclerView.Adapter.StateRestorationPolicy.ALLOW
 //            msgsAdapter.msgsModel = listShows
 //            binding.rcMsgs.adapter = msgsAdapter
-            msgsAdapter.notifyDataSetChanged()
+            msgsAdapter.msgsModel = listShows
             if(binding.rcMsgs.adapter == null){
-                msgsAdapter.msgsModel = listShows
                 binding.rcMsgs.layoutManager = LinearLayoutManager(requireContext())
                 binding.rcMsgs.adapter = msgsAdapter
+            }else{
                 msgsAdapter.notifyDataSetChanged()
             }
             Log.e("tessst","enter111")
 
         }
     }
+
+
+
+//    private  fun setUpRv() = viewModel.viewModelScope.launch {
+//
+////        binding.rcMsgTypes.apply {
+////            adapter = msgstypesAdapter
+////            setHasFixedSize(true)
+////        }
+//
+//
+//        viewModel.getMsgsFromRoom_by_id(argsId,requireContext()).observe(viewLifecycleOwner) { listShows ->
+//            //  msgsAdapter.stateRestorationPolicy=RecyclerView.Adapter.StateRestorationPolicy.ALLOW
+//            msgsAdapter.stateRestorationPolicy= RecyclerView.Adapter.StateRestorationPolicy.ALLOW
+////            msgsAdapter.msgsModel = listShows
+////            binding.rcMsgs.adapter = msgsAdapter
+//            msgsAdapter.notifyDataSetChanged()
+//            if(binding.rcMsgs.adapter == null){
+//                msgsAdapter.msgsModel = listShows
+//                binding.rcMsgs.layoutManager = LinearLayoutManager(requireContext())
+//                binding.rcMsgs.adapter = msgsAdapter
+//                msgsAdapter.notifyDataSetChanged()
+//            }
+//            Log.e("tessst","enter111")
+//
+//        }
+//    }
 
     private fun menu_item() {
         // The usage of an interface lets you inject your own implementation
