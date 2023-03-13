@@ -130,7 +130,7 @@ class Msgs_Adapter(val con:Context,val frag:Fragment /*,var callBack: CallBack*/
         Log.e("tessst","notifyyyy")
         val current_msgsModel = msgsModel[position]
         holder.binding.apply {
-            tvTitleM.text=current_msgsModel.typeTitle.toString()
+//            tvTitleM.text=current_msgsModel.typeTitle.toString()
             tvMsgM.text=current_msgsModel.msgModel?.MessageName
             newMsgM.setImageResource(R.drawable.new_msg)
 

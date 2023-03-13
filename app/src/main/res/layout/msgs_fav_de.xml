@@ -31,7 +31,6 @@
             android:layout_centerVertical="true"
             android:gravity="center"
             android:text="---"
-            android:textColor="#ff0000"
             android:layout_gravity="top"
             />
 

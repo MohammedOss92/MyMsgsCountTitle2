@@ -130,14 +130,16 @@ class FirstFragment : Fragment() {
 
                     R.id.action_theme -> {
 
+
                         val prefs = SharedPref(requireContext())
                         val isDark = prefs.getThemeStatePref()
                         prefs.saveThemeStatePref(!isDark)
+
                         if(isDark){
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                         }
                         else{
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                         }
                     }
 
